@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quran Connect Academy | Premium Classical Arabic & Quranic Studies</title>
     
-    <!-- Professional SEO Optimization -->
     <meta name="description" content="Learn Classical Arabic grammar, Tajweed rules, and Quranic studies online with structured, personalized one-on-one programs under Sheikh Muhammad Abdullah.">
     <meta name="keywords" content="Classical Arabic, Learn Quran Online, Tajweed Rules, Quranic Grammar, Arabic Tutor, Quran Connect Academy">
     <meta name="google-site-verification" content="C7_r3S4jOzROOFRUrt_epWIgigPfwKHeYEOCOS4bbqU" />
     
-    <!-- Premium Google Fonts Integration -->
+    <meta property="og:title" content="Quran Connect Academy | Premium Classical Arabic & Quranic Studies">
+    <meta property="og:description" content="Learn Classical Arabic grammar, Tajweed rules, and Quranic studies online with structured, personalized programs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quranconnectacademy.com">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
@@ -158,6 +161,12 @@
             z-index: 1030; /* Higher than sidebar */
         }
 
+        /* Fixed Mobile Close Button visibility above sidebar overlay */
+        .menu-toggle.open {
+            position: relative;
+            z-index: 1040;
+        }
+
         .menu-toggle span {
             display: block;
             width: 25px;
@@ -167,7 +176,7 @@
             transition: var(--transition);
         }
 
-        /* Hambuger Animation to Cross */
+        /* Hamburger Animation to Cross */
         .menu-toggle.open span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -946,7 +955,6 @@
 </head>
 <body>
 
-    <!-- OVERLAY SHADOW ELEMENT -->
     <div class="menu-overlay" id="blur-overlay"></div>
 
     <header>
@@ -960,16 +968,15 @@
             <span></span>
         </button>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="#home" class="nav-item active">Home</a></li>
-            <li><a href="#programs" class="nav-item">Programs</a></li>
-            <li><a href="#tuition" class="nav-item">Tuition</a></li>
-            <li><a href="#about" class="nav-item">About Us</a></li>
-            <li><a href="#faqs" class="nav-item">FAQs</a></li>
-            <li><a href="#contact" class="nav-item">Contact</a></li>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#tuition">Tuition</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </header>
 
-    <!-- HOME HERO SECTION -->
     <div id="home" class="section-scroll">
         <section class="hero" style="max-width:100%; padding-left:0; padding-right:0; margin:0;">
             <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
@@ -982,7 +989,6 @@
             </div>
         </section>
 
-        <!-- FLOATING INFO CARDS -->
         <div class="grid-info">
             <div class="card-info">
                 <div class="card-info-icon">01</div>
@@ -1002,7 +1008,6 @@
         </div>
     </div>
 
-    <!-- PROGRAMS SECTION -->
     <section id="programs" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             <div class="section-header">
@@ -1075,7 +1080,6 @@
         </div>
     </section>
 
-    <!-- TUITION / PRICING SECTION -->
     <section id="tuition" class="section-scroll">
         <div class="section-header">
             <h2>Tuition Plans</h2>
@@ -1128,7 +1132,6 @@
         
         <p class="custom-note">Need a tailored schedule or family plan? Contact our support desk for custom arrangements.</p>
 
-        <!-- STUDENT SOCIAL PROOF -->
         <div class="reviews">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
@@ -1143,7 +1146,6 @@
         </div>
     </section>
 
-    <!-- ABOUT / FACULTY SECTION -->
     <section id="about" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             <div class="section-header">
@@ -1166,7 +1168,6 @@
                     <p>With more than 7+ years of international teaching experience, Sheikh Muhammad Abdullah has designed clear, systematic pathways to help global students read and understand text smoothly. His classes guide students to recite the Holy Quran using the precise, beautiful phonetic rules matching the verified traditional frameworks of the Imams of the Haram.</p>
                     <p>Alongside his deep classical Islamic education, Sheikh Muhammad Abdullah is an <strong>LLB Graduate (Law)</strong>. This background brings an exceptionally high standard of logical thinking, structural clarity, and modern professional organization into traditional classical learning models. By combining deep traditional roots with formal legal reasoning, he ensures that students receive highly clear, accurate, and professional instruction.</p>
                     
-                    <!-- 4-Step Framework Embedded -->
                     <div class="methodology-box">
                         <h4>Our 4-Step Pedagogical Framework</h4>
                         <div class="methodology-grid">
@@ -1197,7 +1198,6 @@
         </div>
     </section>
 
-    <!-- FAQS SECTION -->
     <section id="faqs" class="section-scroll">
         <div class="section-header">
             <h2>Frequently Asked Questions</h2>
@@ -1263,7 +1263,6 @@
         </div>
     </section>
 
-    <!-- CONVERSION ORIENTED CONTACT BLOCK -->
     <div class="contact-section section-scroll" id="contact">
         <h2>Begin Your Learning Journey</h2>
         <p>Connect with our coordination desk directly to schedule your free evaluation trial setup.</p>
@@ -1312,7 +1311,7 @@
         const menuToggleBtn = document.getElementById('mobile-menu-btn');
         const navMenuContainer = document.getElementById('nav-menu');
         const overlayBg = document.getElementById('blur-overlay');
-        const navLinksList = document.querySelectorAll('.nav-item');
+        const navLinksList = document.querySelectorAll('.nav-links a'); // FIXED: Selects all anchor tags inside nav-links accurately
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
 
