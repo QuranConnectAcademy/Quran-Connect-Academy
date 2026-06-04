@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quran Connect Academy | Premium Classical Arabic & Quranic Studies</title>
     
-    <!-- Professional SEO Optimization -->
     <meta name="description" content="Learn Classical Arabic grammar, Tajweed rules, and Quranic studies online with structured, personalized one-on-one programs under Sheikh Muhammad Abdullah.">
     <meta name="keywords" content="Classical Arabic, Learn Quran Online, Tajweed Rules, Quranic Grammar, Arabic Tutor, Quran Connect Academy">
     <meta name="google-site-verification" content="C7_r3S4jOzROOFRUrt_epWIgigPfwKHeYEOCOS4bbqU" />
     
-    <!-- Premium Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
@@ -41,8 +39,10 @@
             box-sizing: border-box;
         }
 
-        html {
+        html, body {
             scroll-behavior: smooth;
+            width: 100%;
+            overflow-x: hidden; /* FIXED: Prevents right-side layout breaking on zoom-out */
         }
 
         body {
@@ -75,7 +75,7 @@
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 1010;
+            z-index: 1020; /* FIXED: Higher than content but managed with menu */
             border-bottom: 1px solid rgba(4, 46, 28, 0.06);
             box-shadow: var(--shadow-sm);
         }
@@ -113,6 +113,10 @@
             display: flex;
             align-items: center;
             list-style: none;
+        }
+
+        .nav-links li {
+            display: inline-block;
         }
 
         .nav-links a {
@@ -155,7 +159,7 @@
             background: none;
             border: none;
             padding: 5px;
-            z-index: 1030; /* Higher than sidebar */
+            z-index: 1040; /* FIXED: Sits strictly above the sidebar and overlay */
         }
 
         .menu-toggle span {
@@ -167,7 +171,7 @@
             transition: var(--transition);
         }
 
-        /* Hambuger Animation to Cross */
+        /* Hamburger Animation to Cross */
         .menu-toggle.open span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -186,10 +190,10 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(4, 46, 28, 0.15);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 1011;
+            background: rgba(4, 46, 28, 0.3); /* FIXED: Slight darker shade for better separation */
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 1025; /* Sits between header/content and sidebar */
         }
         .menu-overlay.active {
             display: block;
@@ -899,26 +903,32 @@
                 display: flex; 
             }
 
-            /* FIXED: Fully functioning Slide-out Side Menu */
+            /* FIXED: Handled full-screen slide out behavior securely */
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hidden by default */
+                right: -100vw; /* FIXED: Completely moves off-screen regardless of zoom */
                 width: 280px;
                 height: 100vh;
                 background: var(--white);
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                padding: 100px 30px 40px; /* Leave space for button on top */
+                padding: 100px 30px 40px;
                 box-shadow: -10px 0 30px rgba(4, 46, 28, 0.1);
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Ultra smooth slide */
-                z-index: 1015; /* Sits beneath hamburger but above page */
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s ease; /* Ultra smooth slide */
+                z-index: 1030; /* FIXED: Above overlay but below hamburger button context */
+                visibility: hidden; /* FIXED: Completely invisible when closed so zoom-out won't fetch it */
             }
 
-            /* FIXED: This class triggers when Javascript adds '.active' */
+            /* FIXED: Standard explicit state engine trigger */
             .nav-links.active { 
                 right: 0 !important; 
+                visibility: visible;
+            }
+
+            .nav-links li {
+                width: 100%;
             }
 
             .nav-links a { 
@@ -946,7 +956,6 @@
 </head>
 <body>
 
-    <!-- OVERLAY SHADOW ELEMENT -->
     <div class="menu-overlay" id="blur-overlay"></div>
 
     <header>
@@ -969,7 +978,6 @@
         </ul>
     </header>
 
-    <!-- HOME HERO SECTION -->
     <div id="home" class="section-scroll">
         <section class="hero" style="max-width:100%; padding-left:0; padding-right:0; margin:0;">
             <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
@@ -982,7 +990,6 @@
             </div>
         </section>
 
-        <!-- FLOATING INFO CARDS -->
         <div class="grid-info">
             <div class="card-info">
                 <div class="card-info-icon">01</div>
@@ -1002,7 +1009,6 @@
         </div>
     </div>
 
-    <!-- PROGRAMS SECTION -->
     <section id="programs" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             <div class="section-header">
@@ -1075,7 +1081,6 @@
         </div>
     </section>
 
-    <!-- TUITION / PRICING SECTION -->
     <section id="tuition" class="section-scroll">
         <div class="section-header">
             <h2>Tuition Plans</h2>
@@ -1128,7 +1133,6 @@
         
         <p class="custom-note">Need a tailored schedule or family plan? Contact our support desk for custom arrangements.</p>
 
-        <!-- STUDENT SOCIAL PROOF -->
         <div class="reviews">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
@@ -1143,7 +1147,6 @@
         </div>
     </section>
 
-    <!-- ABOUT / FACULTY SECTION -->
     <section id="about" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             <div class="section-header">
@@ -1166,7 +1169,6 @@
                     <p>With more than 7+ years of international teaching experience, Sheikh Muhammad Abdullah has designed clear, systematic pathways to help global students read and understand text smoothly. His classes guide students to recite the Holy Quran using the precise, beautiful phonetic rules matching the verified traditional frameworks of the Imams of the Haram.</p>
                     <p>Alongside his deep classical Islamic education, Sheikh Muhammad Abdullah is an <strong>LLB Graduate (Law)</strong>. This background brings an exceptionally high standard of logical thinking, structural clarity, and modern professional organization into traditional classical learning models. By combining deep traditional roots with formal legal reasoning, he ensures that students receive highly clear, accurate, and professional instruction.</p>
                     
-                    <!-- 4-Step Framework Embedded -->
                     <div class="methodology-box">
                         <h4>Our 4-Step Pedagogical Framework</h4>
                         <div class="methodology-grid">
@@ -1197,7 +1199,6 @@
         </div>
     </section>
 
-    <!-- FAQS SECTION -->
     <section id="faqs" class="section-scroll">
         <div class="section-header">
             <h2>Frequently Asked Questions</h2>
@@ -1263,7 +1264,6 @@
         </div>
     </section>
 
-    <!-- CONVERSION ORIENTED CONTACT BLOCK -->
     <div class="contact-section section-scroll" id="contact">
         <h2>Begin Your Learning Journey</h2>
         <p>Connect with our coordination desk directly to schedule your free evaluation trial setup.</p>
