@@ -10,32 +10,39 @@
     <meta name="keywords" content="Classical Arabic, Learn Quran Online, Tajweed Rules, Quranic Grammar, Arabic Tutor, Quran Connect Academy">
     <meta name="google-site-verification" content="C7_r3S4jOzROOFRUrt_epWIgigPfwKHeYEOCOS4bbqU" />
     
-    
     <!-- Premium Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --emerald: #042e1c;
             --emerald-light: #064e32;
+            --emerald-soft: #f0f7f4;
             --gold: #c29d38;
-            --gold-hover: #b08c2f;
+            --gold-light: #dfb74a;
+            --gold-soft: #fbf7ec;
             --charcoal: #0f172a;
             --slate: #475569;
-            --cream: #f8fafc;
+            --cream: #fafaf9;
             --white: #ffffff;
             --border: #e2e8f0;
-            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
-            --shadow-md: 0 10px 25px -5px rgba(4, 46, 28, 0.08), 0 8px 10px -6px rgba(4, 46, 28, 0.08);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 12px 30px -5px rgba(4, 46, 28, 0.08), 0 8px 16px -6px rgba(4, 46, 28, 0.04);
+            --shadow-lg: 0 20px 40px -10px rgba(4, 46, 28, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --header-height: 75px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -49,56 +56,82 @@
         h1, h2, h3, h4 {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
+            color: var(--emerald);
         }
 
-        /* PREMIUM HEADER */
+        .section-scroll {
+            scroll-margin-top: var(--header-height);
+        }
+
+        /* PREMIUM STICKY HEADER */
         header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 18px 8%;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0 6%;
+            height: var(--header-height);
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            z-index: 1010;
+            border-bottom: 1px solid rgba(4, 46, 28, 0.06);
             box-shadow: var(--shadow-sm);
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 18px;
+            border: 1px solid var(--gold);
+        }
+
         .logo h1 {
-            font-size: 24px;
+            font-size: 21px;
             color: var(--emerald);
             font-weight: 800;
             letter-spacing: -0.5px;
-            cursor: pointer;
         }
 
-        nav {
+        .nav-links {
             display: flex;
             align-items: center;
+            list-style: none;
         }
 
-        nav a, .footer-links a {
-            cursor: pointer;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        nav a {
+        .nav-links a {
             color: var(--slate);
             text-decoration: none;
-            margin-left: 32px;
+            margin-left: 28px;
             font-weight: 500;
             font-size: 15px;
             padding: 8px 0;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
         }
 
-        nav a:hover, nav a.active {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--emerald);
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -109,46 +142,94 @@
             transition: var(--transition);
         }
 
-        nav a:hover::after, nav a.active::after {
+        .nav-links a:hover::after, .nav-links a.active::after {
             width: 100%;
         }
 
-        /* PAGE CONTENT TRANSITIONS */
-        .page-content {
+        /* MOBILE MENU BUTTON */
+        .menu-toggle {
             display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1030; /* Higher than sidebar */
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--emerald);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Hambuger Animation to Cross */
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-toggle.open span:nth-child(2) {
             opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
-        .page-content.active-page {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        /* BACKGROUND OVERLAY WHEN SIDE MENU OPEN */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(4, 46, 28, 0.15);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1011;
+        }
+        .menu-overlay.active {
+            display: block;
         }
 
-        /* TOP-RANKING HERO SECTION */
+        /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(4, 46, 28, 0.88), rgba(2, 20, 12, 0.96)), 
-                        url('https://images.unsplash.com/photo-1609599006313-c638676eb9a6?q=80&w=1600') no-repeat center center/cover;
+            background: linear-gradient(rgba(4, 46, 28, 0.85), rgba(2, 20, 12, 0.95)), 
+                        url('https://images.unsplash.com/photo-1542816417-0f0c8427427a?q=80&w=1600') no-repeat center center/cover;
             color: var(--white);
             text-align: center;
-            padding: 160px 20px 140px;
+            padding: 140px 24px 160px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--cream), transparent);
         }
 
         .hero h2 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 24px;
+            color: var(--white);
+            font-size: 46px;
+            line-height: 1.25;
+            margin-bottom: 20px;
             letter-spacing: -1px;
-            max-width: 800px;
+            max-width: 850px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .hero p {
-            font-size: 19px;
-            max-width: 650px;
-            margin: 0 auto 40px;
+            font-size: 18px;
+            max-width: 680px;
+            margin: 0 auto 35px;
             color: #cbd5e1;
             font-weight: 400;
         }
@@ -160,107 +241,194 @@
             flex-wrap: wrap;
         }
 
-        /* PREMIUM CTA BUTTONS */
+        /* PREMIUM BUTTONS */
         .btn {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--emerald);
-            padding: 14px 36px;
+            padding: 14px 32px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
-            border-radius: 6px;
+            font-size: 15px;
+            border-radius: 8px;
             display: inline-block;
-            box-shadow: 0 4px 14px rgba(194, 157, 56, 0.3);
+            box-shadow: 0 4px 14px rgba(194, 157, 56, 0.35);
             border: none;
             cursor: pointer;
             transition: var(--transition);
         }
 
         .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(194, 157, 56, 0.5);
             background: var(--white);
             color: var(--emerald);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.08);
             color: var(--white);
-            padding: 14px 36px;
+            padding: 14px 32px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
-            border-radius: 6px;
+            font-size: 15px;
+            border-radius: 8px;
             display: inline-block;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             cursor: pointer;
             transition: var(--transition);
+            backdrop-filter: blur(4px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--white);
+            color: var(--emerald);
             border-color: var(--white);
             transform: translateY(-2px);
         }
 
-        /* FLOATING INFO CARDS */
+        /* GRID OVERLAY CARDS */
         .grid-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
-            max-width: 1200px;
-            margin: -60px auto 80px;
+            max-width: 1100px;
+            margin: -60px auto 60px;
             padding: 0 24px;
+            position: relative;
+            z-index: 10;
         }
 
         .card-info {
             background: var(--white);
-            padding: 35px 30px;
+            padding: 30px;
             border-radius: 12px;
-            border-top: 4px solid var(--gold);
+            border-bottom: 3px solid var(--gold);
             box-shadow: var(--shadow-md);
             transition: var(--transition);
         }
 
         .card-info:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-info-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--emerald-soft);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--emerald);
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
 
         .card-info h3 {
-            color: var(--emerald);
-            font-size: 20px;
-            margin-bottom: 12px;
+            font-size: 19px;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .card-info p {
             color: var(--slate);
-            font-size: 15px;
+            font-size: 14.5px;
+            line-height: 1.6;
         }
 
-        /* MAIN SECTIONS */
-        .main-section {
-            padding: 80px 8%;
-            max-width: 1240px;
+        /* SECTIONS WRAPPER */
+        section {
+            padding: 90px 6% 70px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .main-section h2 {
-            font-size: 36px;
-            color: var(--emerald);
+        .section-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-header h2 {
+            font-size: 34px;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
         }
 
-        .section-desc {
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .section-header p {
             color: var(--slate);
-            font-size: 17px;
-            margin-bottom: 50px;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* FACULTY PROFILE BOX */
+        /* FACULTY LAYOUT */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-image-side {
+            position: relative;
+        }
+
+        .about-img-box {
+            width: 100%;
+            height: 420px;
+            border-radius: 16px;
+            background: linear-gradient(rgba(4, 46, 28, 0.2), rgba(4, 46, 28, 0.4)),
+                        url('https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800') no-repeat center center/cover;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(194, 157, 56, 0.2);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            background: var(--emerald);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--gold);
+        }
+
+        .experience-badge .num {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+        }
+
+        .experience-badge .txt {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+        }
+
         .profile-box {
             background: var(--white);
-            padding: 45px;
+            padding: 40px;
             border-radius: 16px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
@@ -269,79 +437,92 @@
         .profile-tag {
             color: var(--gold);
             font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            display: inline-block;
+            background: var(--gold-soft);
+            padding: 4px 12px;
+            border-radius: 4px;
         }
 
         .profile-box h3 {
             font-size: 26px;
-            color: var(--emerald);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .profile-box p {
-            margin-bottom: 20px;
-            font-size: 16px;
+            margin-bottom: 18px;
+            font-size: 15px;
             color: #334155;
         }
 
-        /* METHODOLOGY TIMELINE FLOW */
+        /* 4-STEP FRAMEWORK TIMELINE */
         .methodology-box {
-            margin-top: 40px;
-            background: #f1f5f9;
-            padding: 30px;
+            margin-top: 35px;
+            background: var(--emerald-soft);
+            padding: 25px;
             border-radius: 12px;
-            border-left: 4px solid var(--emerald);
-        }
-        .methodology-box h4 {
-            color: var(--emerald);
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        .methodology-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-        .method-step {
-            background: var(--white);
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-        .method-step span {
-            color: var(--gold);
-            font-weight: bold;
-            font-size: 13px;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .method-step h5 {
-            color: var(--charcoal);
-            font-size: 15px;
-            margin-bottom: 5px;
-        }
-        .method-step p {
-            font-size: 13px;
-            color: var(--slate);
-            line-height: 1.5;
+            border-top: 3px solid var(--emerald);
         }
 
-        /* PROGRAMS GRID */
+        .methodology-box h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .method-step {
+            background: var(--white);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .method-step span {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .method-step h5 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .method-step p {
+            font-size: 12.5px;
+            color: var(--slate);
+            line-height: 1.4;
+            margin-bottom: 0;
+        }
+
+        /* PROGRAMS ROW DESIGN */
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .program-item {
             background: var(--white);
-            padding: 35px;
+            padding: 30px;
             border-radius: 12px;
             border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: var(--transition);
         }
 
@@ -351,49 +532,49 @@
             transform: translateY(-3px);
         }
 
-        .program-item h3 {
-            color: var(--emerald);
-            font-size: 22px;
-            margin-bottom: 12px;
+        .program-meta h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .program-item p {
+        .program-meta p {
             color: var(--slate);
-            font-size: 15px;
+            font-size: 14.5px;
             margin-bottom: 20px;
         }
 
         .program-list {
             list-style: none;
+            margin-bottom: 20px;
         }
 
         .program-list li {
-            font-size: 14.5px;
+            font-size: 14px;
             color: #334155;
-            margin-bottom: 10px;
-            padding-left: 24px;
+            margin-bottom: 8px;
+            padding-left: 20px;
             position: relative;
         }
 
         .program-list li::before {
-            content: "→";
+            content: "✦";
             color: var(--gold);
             position: absolute;
             left: 0;
-            font-weight: bold;
+            font-size: 11px;
         }
 
-        /* PRICING GRID */
+        /* TUITION / PRICING CARDS */
         .price-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
             align-items: stretch;
         }
 
         .price-card {
             background: var(--white);
-            padding: 40px 28px;
+            padding: 35px 24px;
             border-radius: 14px;
             border: 1px solid var(--border);
             text-align: center;
@@ -405,40 +586,41 @@
 
         .price-card.featured {
             border: 2px solid var(--gold);
-            box-shadow: var(--shadow-md);
-            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.03);
+            background: var(--gold-soft);
         }
 
         .popular-badge {
             position: absolute;
-            top: -14px;
+            top: -13px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--emerald);
             padding: 4px 16px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             border-radius: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(194, 157, 56, 0.25);
         }
 
         .price-card h3 {
-            font-size: 18px;
-            color: var(--emerald);
-            margin-bottom: 15px;
+            font-size: 17px;
+            margin-bottom: 12px;
         }
 
         .price-card .cost {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             color: var(--charcoal);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .price-card .cost span {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--slate);
             font-weight: 400;
         }
@@ -446,21 +628,21 @@
         .price-list {
             list-style: none;
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             flex-grow: 1;
         }
 
         .price-list li {
-            font-size: 14px;
-            margin-bottom: 12px;
-            padding-left: 24px;
+            font-size: 13.5px;
+            margin-bottom: 10px;
+            padding-left: 20px;
             position: relative;
             color: #334155;
         }
 
         .price-list li::before {
             content: "✓";
-            color: var(--gold);
+            color: var(--emerald);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -468,464 +650,752 @@
 
         .custom-note {
             text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
+            margin-top: 35px;
+            font-size: 14.5px;
             color: var(--slate);
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: 600px;
+            border: 1px dashed var(--border);
         }
 
-        /* REVIEWS / SOCIAL PROOF */
+        /* REVIEWS BANNER */
         .reviews {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 28px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 55px;
         }
 
         .review-card {
             background: var(--white);
-            padding: 35px;
+            padding: 30px;
             border-radius: 12px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
+            position: relative;
         }
 
         .stars { 
             color: var(--gold); 
             margin-bottom: 12px; 
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .review-card p {
             font-style: italic;
             color: var(--slate);
             margin-bottom: 15px;
+            font-size: 14px;
         }
 
         .review-card h4 {
-            color: var(--emerald);
-            font-size: 15px;
+            font-size: 14.5px;
+            font-weight: 600;
         }
 
-        /* CONVERSION ORIENTED CONTACT FOOTER */
+        /* ACCORDION */
+        .faq-container {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--emerald);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-icon {
+            font-size: 18px;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--slate);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 24px 24px;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* PREMIUM CALL TO ACTION */
         .contact-section {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-light)), 
+                        url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200') no-repeat center center/cover;
+            background-blend-mode: multiply;
             color: var(--white);
-            text-align: center;
-            padding: 90px 8%;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px auto 80px;
+            max-width: 1100px;
+            box-shadow: var(--shadow-lg);
         }
 
         .contact-section h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
+            color: var(--white);
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .contact-section > p {
+            text-align: center;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+            font-size: 16px;
         }
 
         .contact-container {
-            max-width: 900px;
-            margin: 40px auto 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1.2fr;
             gap: 30px;
+            align-items: center;
         }
 
         .contact-boxes {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            justify-content: center;
+            gap: 16px;
         }
 
         .c-box {
             background: rgba(255, 255, 255, 0.06);
-            padding: 24px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 8px;
-            text-align: left;
+            padding: 20px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             transition: var(--transition);
+            backdrop-filter: blur(8px);
         }
 
         .c-box:hover {
             background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+            transform: translateX(3px);
+        }
+
+        .c-box p {
+            color: var(--gold);
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .c-box a {
             color: var(--white);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-size: 17px;
         }
 
-        /* IN-BUILT DESKTOP BACKUP FORM */
         .contact-form {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 25px;
             border-radius: 12px;
-            text-align: left;
+            backdrop-filter: blur(8px);
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 12px;
             border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.06);
             color: var(--white);
             font-family: inherit;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.1);
         }
 
         .form-group input::placeholder, .form-group textarea::placeholder {
-            color: #cbd5e1;
+            color: #94a3b8;
         }
 
         footer {
             background: #02140c;
             color: #64748b;
             text-align: center;
-            padding: 35px 20px;
+            padding: 40px 24px;
             font-size: 14px;
             border-top: 1px solid rgba(255,255,255,0.02);
         }
 
         .footer-links {
-            margin-top: 10px;
+            margin-top: 15px;
         }
+        
         .footer-links a {
             color: #475569;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
         }
-        .footer-links a:hover, .footer-links a.active {
+        
+        .footer-links a:hover {
             color: var(--gold);
         }
 
-        /* RESPONSIVE DESIGN */
+        /* RESPONSIVENESS AND FIXED MOBILE VIEW SIDEBAR */
+        @media (max-width: 968px) {
+            .about-container { grid-template-columns: 1fr; }
+            .about-img-box { height: 320px; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
-            header { 
-                flex-direction: column; 
-                gap: 16px; 
-                padding: 20px;
+            .menu-toggle { 
+                display: flex; 
             }
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
+
+            /* FIXED: Fully functioning Slide-out Side Menu */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hidden by default */
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 100px 30px 40px; /* Leave space for button on top */
+                box-shadow: -10px 0 30px rgba(4, 46, 28, 0.1);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Ultra smooth slide */
+                z-index: 1015; /* Sits beneath hamburger but above page */
             }
-            nav a { 
-                margin: 0 10px; 
-                font-size: 14px;
+
+            /* FIXED: This class triggers when Javascript adds '.active' */
+            .nav-links.active { 
+                right: 0 !important; 
             }
-            .hero h2 { font-size: 32px; }
+
+            .nav-links a { 
+                margin-left: 0; 
+                margin-bottom: 25px; 
+                display: block; 
+                font-size: 16px; 
+                width: 100%; 
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 10px;
+            }
+            
+            .hero { padding: 100px 20px 120px; }
+            .hero h2 { font-size: 28px; line-height: 1.3; }
+            .hero p { font-size: 15px; margin-bottom: 25px; }
+            
             .hero-btn-container { flex-direction: column; gap: 12px; }
             .btn, .btn-secondary { width: 100%; text-align: center; }
-            .main-section { padding: 60px 20px; }
-            .price-card.featured { transform: none; }
-            .contact-container { grid-template-columns: 1fr; }
+            section { padding: 60px 20px 40px; }
+            .section-header h2 { font-size: 26px; }
+            .price-card.featured { transform: none; margin: 10px 0; }
+            .contact-section { padding: 40px 20px; border-radius: 10px; margin-bottom: 40px;}
         }
     </style>
 </head>
 <body>
 
+    <!-- OVERLAY SHADOW ELEMENT -->
+    <div class="menu-overlay" id="blur-overlay"></div>
+
     <header>
-        <div class="logo" onclick="navigateTo('home')">
+        <a href="#home" class="logo">
+            <div class="logo-icon">Q</div>
             <h1>Quran Connect Academy</h1>
-        </div>
-        <nav>
-            <a onclick="navigateTo('home')" class="active">Home</a>
-            <a onclick="navigateTo('about')">About Us</a>
-            <a onclick="navigateTo('programs')">Programs</a>
-            <a onclick="navigateTo('tuition')">Tuition</a>
-            <a onclick="navigateTo('contact')">Contact</a>
-        </nav>
+        </a>
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home" class="nav-item active">Home</a></li>
+            <li><a href="#programs" class="nav-item">Programs</a></li>
+            <li><a href="#tuition" class="nav-item">Tuition</a></li>
+            <li><a href="#about" class="nav-item">About Us</a></li>
+            <li><a href="#faqs" class="nav-item">FAQs</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
+        </ul>
     </header>
 
-    <!-- HOME PAGE -->
-    <div id="page-home" class="page-content">
-        <section class="hero">
-            <h2>Online Quran & Classical Arabic Studies</h2>
-            <p>Providing clear, highly structured online guidance designed for global students seeking to master precise phonetic recitation, structural grammar, and comprehension.</p>
-            <div class="hero-btn-container">
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20booking%20a%20free%20trial%20class%20at%20Quran%20Connect%20Academy." class="btn" target="_blank">Book A Free Trial Class</a>
-                <button onclick="navigateTo('programs')" class="btn-secondary">Explore Programs</button>
+    <!-- HOME HERO SECTION -->
+    <div id="home" class="section-scroll">
+        <section class="hero" style="max-width:100%; padding-left:0; padding-right:0; margin:0;">
+            <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+                <h2>Online Quran & Classical Arabic Studies</h2>
+                <p>Providing clear, highly structured online guidance designed for global students seeking to master precise phonetic recitation, structural grammar, and comprehension.</p>
+                <div class="hero-btn-container">
+                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20booking%20a%20free%20trial%20class%20at%20Quran%20Connect%20Academy." class="btn" target="_blank">Book A Free Trial Class</a>
+                    <a href="#programs" class="btn-secondary">Explore Programs</a>
+                </div>
             </div>
         </section>
 
-        <section class="grid-info">
+        <!-- FLOATING INFO CARDS -->
+        <div class="grid-info">
             <div class="card-info">
+                <div class="card-info-icon">01</div>
                 <h3>Structured Curriculum</h3>
                 <p>Lessons are systematically personalized around the student's pace to guarantee steady, verified progress without rushing.</p>
             </div>
             <div class="card-info">
+                <div class="card-info-icon">02</div>
                 <h3>Global Scheduling</h3>
                 <p>Classes are arranged flexibly across multiple hours to integrate into international timezones smoothly.</p>
             </div>
             <div class="card-info">
+                <div class="card-info-icon">03</div>
                 <h3>Authentic Academic Base</h3>
                 <p>All programs strictly prioritize standard linguistic structures to prevent mistakes from the very foundation.</p>
             </div>
-        </section>
+        </div>
     </div>
 
-    <!-- ABOUT / FACULTY PAGE -->
-    <div id="page-about" class="page-content">
-        <section class="main-section">
-            <h2>Our Faculty</h2>
-            <p class="section-desc">Learn about the academic foundation and educational direction of our academy</p>
-            
-            <div class="profile-box">
-                <div class="profile-tag">Founder & Director</div>
-                <h3>Sheikh Muhammad Abdullah</h3>
-                <p>Quran Connect Academy operates under the direct guidance of <strong>Sheikh Muhammad Abdullah</strong>, a professional educator. He holds a formal <strong>Master's degree in Arabic & Islamic Sciences</strong> along with a specialized higher specialization focusing on classical Arabic grammar and textual syntax from a recognized traditional institution.</p>
-                <p>With more than <strong>7+ years of international teaching experience</strong>, Sheikh Muhammad Abdullah has designed clear, systematic pathways to help global students read and understand text smoothly. His classes guide students to recite the Holy Quran using the precise, beautiful phonetic rules matching the verified traditional frameworks of the Imams of the Haram.</p>
-                <p>Alongside his deep classical Islamic education, Sheikh Muhammad Abdullah is an <strong>LLB Graduate (Law)</strong>. This background brings an exceptionally high standard of logical thinking, structural clarity, and modern professional organization into traditional classical learning models. By combining deep traditional roots with formal legal reasoning, he ensures that students receive highly clear, accurate, and professional instruction.</p>
-                
-                <!-- Methodology Flow Integration -->
-                <div class="methodology-box">
-                    <h4>Our 4-Step Pedagogical Framework</h4>
-                    <div class="methodology-grid">
-                        <div class="method-step">
-                            <span>Step 01</span>
-                            <h5>Technical Analysis</h5>
-                            <p>Breaking down classical texts to understand root formulas.</p>
-                        </div>
-                        <div class="method-step">
-                            <span>Step 02</span>
-                            <h5>Rule Application</h5>
-                            <p>Practical, hands-on drills to internalize linguistic laws.</p>
-                        </div>
-                        <div class="method-step">
-                            <span>Step 03</span>
-                            <h5>Vocabulary Building</h5>
-                            <p>Systematic expansion of active context-based words.</p>
-                        </div>
-                        <div class="method-step">
-                            <span>Step 04</span>
-                            <h5>Fluency Milestone</h5>
-                            <p>Achieving confident, independent error-free reading.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- PROGRAMS SECTION -->
+    <section id="programs" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header">
+                <h2>Our Programs</h2>
+                <p>Clear and carefully organized courses built for both young learners and adults</p>
             </div>
-        </section>
-    </div>
-
-    <!-- PROGRAMS PAGE -->
-    <div id="page-programs" class="page-content">
-        <section class="main-section">
-            <h2>Our Programs</h2>
-            <p class="section-desc">Clear and carefully organized courses built for both young learners and adults</p>
             
             <div class="programs-grid">
                 <div class="program-item">
-                    <h3>Noorani Qaida</h3>
-                    <p>The essential initial guide to perfect your foundational reading before moving into continuous texts.</p>
-                    <ul class="program-list">
-                        <li>Master correct alphabet shapes and phonetic values</li>
-                        <li>Learn basic articulation points for clear reading</li>
-                    </ul>
+                    <div class="program-meta">
+                        <h3>Noorani Qaida</h3>
+                        <p>The essential initial guide to perfect your foundational reading before moving into continuous texts.</p>
+                        <ul class="program-list">
+                            <li>Master correct alphabet shapes and phonetic values</li>
+                            <li>Learn basic articulation points for clear reading</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="program-item">
-                    <h3>Arabic Language</h3>
-                    <p>Understand the structure of classical text sentences and gain confidence in reading grammar rules.</p>
-                    <ul class="program-list">
-                        <li>Clear study of grammar, syntax, and word building</li>
-                        <li>Practical system to develop active vocabulary smoothly</li>
-                    </ul>
+                    <div class="program-meta">
+                        <h3>Arabic Language</h3>
+                        <p>Understand the structure of classical text sentences and gain confidence in reading grammar rules.</p>
+                        <ul class="program-list">
+                            <li>Clear study of grammar, syntax, and word building</li>
+                            <li>Practical system to develop active vocabulary smoothly</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="program-item">
-                    <h3>Tajweed Rules</h3>
-                    <p>Refine your recitation style and perfect your pronunciation according to classical standards.</p>
-                    <ul class="program-list">
-                        <li>Apply advanced vocal and rhythmic reading rules</li>
-                        <li>Live corrections during your active reading sessions</li>
-                    </ul>
+                    <div class="program-meta">
+                        <h3>Tajweed Rules</h3>
+                        <p>Refine your recitation style and perfect your pronunciation according to classical standards.</p>
+                        <ul class="program-list">
+                            <li>Apply advanced vocal and rhythmic reading rules</li>
+                            <li>Live corrections during your active reading sessions</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="program-item">
-                    <h3>Tafsir Core</h3>
-                    <p>Go beyond literal words to explore the profound meanings and historical backgrounds of the verses.</p>
-                    <ul class="program-list">
-                        <li>Study the context of revelations (Asbab al-Nuzul)</li>
-                        <li>Develop deep comprehension of core messages</li>
-                    </ul>
+                    <div class="program-meta">
+                        <h3>Tafsir Core</h3>
+                        <p>Go beyond literal words to explore the profound meanings and historical backgrounds of the verses.</p>
+                        <ul class="program-list">
+                            <li>Study the context of revelations (Asbab al-Nuzul)</li>
+                            <li>Develop deep comprehension of core messages</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="program-item">
-                    <h3>Quran Translation</h3>
-                    <p>Build true direct understanding of the text without heavily relying on intermediate steps.</p>
-                    <ul class="program-list">
-                        <li>Word-for-word translation structural frameworks</li>
-                        <li>Gain independent reading comprehension skills</li>
-                    </ul>
+                    <div class="program-meta">
+                        <h3>Quran Translation</h3>
+                        <p>Build true direct understanding of the text without heavily relying on intermediate steps.</p>
+                        <ul class="program-list">
+                            <li>Word-for-word translation structural frameworks</li>
+                            <li>Gain independent reading comprehension skills</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="program-item">
-                    <h3>Salah Rectification</h3>
-                    <p>Review and correct your prayer details, focusing on accurate physical postures and correct recitation sounds.</p>
-                    <ul class="program-list">
-                        <li>Study the essential rules for a valid prayer</li>
-                        <li>Correct common pronunciation faults</li>
-                    </ul>
+                    <div class="program-meta">
+                        <h3>Salah Rectification</h3>
+                        <p>Review and correct your prayer details, focusing on accurate physical postures and correct recitation sounds.</p>
+                        <ul class="program-list">
+                            <li>Study the essential rules for a valid prayer</li>
+                            <li>Correct common pronunciation faults</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- TUITION / PRICING PAGE -->
-    <div id="page-tuition" class="page-content">
-        <section class="main-section">
+    <!-- TUITION / PRICING SECTION -->
+    <section id="tuition" class="section-scroll">
+        <div class="section-header">
             <h2>Tuition Plans</h2>
-            <p class="section-desc">Transparent and structured options for premium one-on-one education</p>
-            
-            <div class="price-grid">
-                <div class="price-card">
-                    <h3>Foundation Plan</h3>
-                    <div class="cost">$35 <span>USD / Month</span></div>
-                    <ul class="price-list">
-                        <li>2 Sessions Per Week</li>
-                        <li>8 Classes / Month</li>
-                        <li>30-Minute Sessions</li>
-                    </ul>
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Foundation%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
-                </div>
-                <div class="price-card featured">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>Standard Plan</h3>
-                    <div class="cost">$50 <span>USD / Month</span></div>
-                    <ul class="price-list">
-                        <li>3 Sessions Per Week</li>
-                        <li>12 Classes / Month</li>
-                        <li>30-Minute Sessions</li>
-                    </ul>
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Standard%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
-                </div>
-                <div class="price-card">
-                    <h3>Intensive Plan</h3>
-                    <div class="cost">$75 <span>USD / Month</span></div>
-                    <ul class="price-list">
-                        <li>5 Sessions Per Week</li>
-                        <li>20 Classes / Month</li>
-                        <li>30-Minute Sessions</li>
-                    </ul>
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Intensive%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
-                </div>
-                <div class="price-card">
-                    <h3>Premium Weekend Plan</h3>
-                    <div class="cost">$100 <span>USD / Month</span></div>
-                    <ul class="price-list">
-                        <li>Special Weekend Sessions</li>
-                        <li>Custom Hours / Month</li>
-                        <li>Flexible Class Length</li>
-                    </ul>
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Premium%20Weekend%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
-                </div>
+            <p>Transparent and structured options for premium one-on-one education</p>
+        </div>
+        
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Foundation Plan</h3>
+                <div class="cost">$35 <span>USD / Month</span></div>
+                <ul class="price-list">
+                    <li>2 Sessions Per Week</li>
+                    <li>8 Classes / Month</li>
+                    <li>30-Minute Sessions</li>
+                </ul>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Foundation%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+            </div>
+            <div class="price-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Standard Plan</h3>
+                <div class="cost">$50 <span>USD / Month</span></div>
+                <ul class="price-list">
+                    <li>3 Sessions Per Week</li>
+                    <li>12 Classes / Month</li>
+                    <li>30-Minute Sessions</li>
+                </ul>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Standard%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+            </div>
+            <div class="price-card">
+                <h3>Intensive Plan</h3>
+                <div class="cost">$75 <span>USD / Month</span></div>
+                <ul class="price-list">
+                    <li>5 Sessions Per Week</li>
+                    <li>20 Classes / Month</li>
+                    <li>30-Minute Sessions</li>
+                </ul>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Intensive%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+            </div>
+            <div class="price-card">
+                <h3>Premium Weekend Plan</h3>
+                <div class="cost">$100 <span>USD / Month</span></div>
+                <ul class="price-list">
+                    <li>Special Weekend Sessions</li>
+                    <li>Custom Hours / Month</li>
+                    <li>Flexible Class Length</li>
+                </ul>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Premium%20Weekend%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+            </div>
+        </div>
+        
+        <p class="custom-note">Need a tailored schedule or family plan? Contact our support desk for custom arrangements.</p>
+
+        <!-- STUDENT SOCIAL PROOF -->
+        <div class="reviews">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The instruction is exceptionally clear. The director's academic legal background adds an incredible level of structural clarity to the classical grammar lessons."</p>
+                <h4>Saif (Linguistic Analysis Student)</h4>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Very cooperative and professional. The coordination makes scheduling incredibly simple around our local school timings."</p>
+                <h4>Amina (United Kingdom Student)</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / FACULTY SECTION -->
+    <section id="about" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div class="section-header">
+                <h2>Our Faculty</h2>
+                <p>Learn about the academic foundation and educational direction of our academy</p>
             </div>
             
-            <p class="custom-note">Need a tailored schedule or family plan? Contact our support desk for custom arrangements.</p>
-
-            <div class="reviews">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"The instruction is exceptionally clear. The director's academic legal background adds an incredible level of structural clarity to the classical grammar lessons."</p>
-                    <h4>Saif (Linguistic Analysis Student)</h4>
+            <div class="about-container">
+                <div class="about-image-side">
+                    <div class="about-img-box"></div>
+                    <div class="experience-badge">
+                        <span class="num">7+</span>
+                        <span class="txt">Years Global<br>Experience</span>
+                    </div>
                 </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Very cooperative and professional. The coordination makes scheduling incredibly simple around our local school timings."</p>
-                    <h4>Amina (United Kingdom Student)</h4>
+                <div class="profile-box">
+                    <div class="profile-tag">Founder & Director</div>
+                    <h3>Sheikh Muhammad Abdullah</h3>
+                    <p>Quran Connect Academy operates under the direct guidance of <strong>Sheikh Muhammad Abdullah</strong>, a professional educator. He holds a formal <strong>Master's degree in Arabic & Islamic Sciences</strong> along with a specialized higher specialization focusing on classical Arabic grammar and textual syntax from a recognized traditional institution.</p>
+                    <p>With more than 7+ years of international teaching experience, Sheikh Muhammad Abdullah has designed clear, systematic pathways to help global students read and understand text smoothly. His classes guide students to recite the Holy Quran using the precise, beautiful phonetic rules matching the verified traditional frameworks of the Imams of the Haram.</p>
+                    <p>Alongside his deep classical Islamic education, Sheikh Muhammad Abdullah is an <strong>LLB Graduate (Law)</strong>. This background brings an exceptionally high standard of logical thinking, structural clarity, and modern professional organization into traditional classical learning models. By combining deep traditional roots with formal legal reasoning, he ensures that students receive highly clear, accurate, and professional instruction.</p>
+                    
+                    <!-- 4-Step Framework Embedded -->
+                    <div class="methodology-box">
+                        <h4>Our 4-Step Pedagogical Framework</h4>
+                        <div class="methodology-grid">
+                            <div class="method-step">
+                                <span>Step 01</span>
+                                <h5>Technical Analysis</h5>
+                                <p>Breaking down classical texts to understand root formulas.</p>
+                            </div>
+                            <div class="method-step">
+                                <span>Step 02</span>
+                                <h5>Rule Application</h5>
+                                <p>Practical, hands-on drills to internalize linguistic laws.</p>
+                            </div>
+                            <div class="method-step">
+                                <span>Step 03</span>
+                                <h5>Vocabulary Building</h5>
+                                <p>Systematic expansion of active context-based words.</p>
+                            </div>
+                            <div class="method-step">
+                                <span>Step 04</span>
+                                <h5>Fluency Milestone</h5>
+                                <p>Achieving confident, independent error-free reading.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- CONTACT PAGE -->
-    <div id="page-contact" class="page-content">
-        <section class="contact-section">
-            <h2>Begin Your Learning Journey</h2>
-            <p>Connect with our coordination desk directly to schedule your free evaluation trial setup.</p>
-            
-            <div class="contact-container">
-                <div class="contact-boxes">
-                    <div class="c-box">
-                        <p style="color:var(--gold); font-size:12px; text-transform:uppercase; margin-bottom:8px; font-weight:700; letter-spacing:1px;">Direct WhatsApp</p>
-                        <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20want%20to%20get%20in%20touch%20with%20Quran%20Connect%20Academy." target="_blank">+92 314 4063401</a>
-                    </div>
-                    <div class="c-box">
-                        <p style="color:var(--gold); font-size:12px; text-transform:uppercase; margin-bottom:8px; font-weight:700; letter-spacing:1px;">Email Desk</p>
-                        <a href="mailto:info@quranconnectacademy.com">info@quranconnectacademy.com</a>
+    <!-- FAQS SECTION -->
+    <section id="faqs" class="section-scroll">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common inquiries about our classes, schedules, and systems</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I register and start my classes?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Registration is fast and seamless. You can click on any "Enrol Now" button to message us directly on WhatsApp, or simply fill out the contact form below. Our dedicated coordination support desk will instantly contact you to understand your specific proficiency level, discuss goals, and book your first interactive trial session at a time that works best for you.</p>
                     </div>
                 </div>
-
-                <!-- Desktop Form Support -->
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your request has been simulated. Connect via WhatsApp for instant reply.');">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="3" placeholder="Message or Preferred Class Timings" required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width:100%; padding:12px;">Submit Request</button>
-                </form>
             </div>
-        </section>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer free evaluation trial classes?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes, absolutely. We offer premium, comprehensive evaluation trial sessions completely free of charge. This allows students and parents to interact with our instructors, evaluate our custom digital learning portal tools, and experience our structured framework firsthand with absolutely no financial risk or initial subscription commitments.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the standard duration of each class?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Each personalized one-on-one private session is structured for 30 minutes. Modern pedagogical research proves that focused, high-engagement 30-minute blocks maximize retention and prevent digital fatigue, making it highly effective for both young learners and busy professionals who want to maintain steady linguistic progress.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I adjust or reschedule my class timings later?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes, our system is designed to accommodate dynamic global schedules. Since we serve students across multiple international timezones (including the UK, Europe, and the Middle East), you can smoothly coordinate temporary or permanent schedule shifts directly with our administrative support desk to ensure your education is never interrupted.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is this academy suitable for absolute beginners?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Completely. Our foundational programs, such as Noorani Qaida and Elementary Arabic, are crafted specifically for absolute beginners. We break down complex phonetic articulation points and basic word structures into highly manageable steps, giving you a strong, verified foundational root before moving on to advanced texts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONVERSION ORIENTED CONTACT BLOCK -->
+    <div class="contact-section section-scroll" id="contact">
+        <h2>Begin Your Learning Journey</h2>
+        <p>Connect with our coordination desk directly to schedule your free evaluation trial setup.</p>
+        
+        <div class="contact-container">
+            <div class="contact-boxes">
+                <div class="c-box">
+                    <p>Direct WhatsApp</p>
+                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20want%20to%20get%20in%20touch%20with%20Quran%20Connect%20Academy." target="_blank">+92 314 4063401</a>
+                </div>
+                <div class="c-box">
+                    <p>Email Desk</p>
+                    <a href="mailto:info@quranconnectacademy.com">info@quranconnectacademy.com</a>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Connect via WhatsApp for instant reply.');">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="3" placeholder="Message or Preferred Class Timings" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width:100%; padding:12px; background: var(--gold); color: var(--emerald);">Submit Request</button>
+            </form>
+        </div>
     </div>
 
     <footer>
         <div>&copy; 2026 Quran Connect Academy. All Rights Reserved.</div>
         <div class="footer-links">
-            <a onclick="navigateTo('home')" class="active">Home</a>
-            <a onclick="navigateTo('about')">About</a>
-            <a onclick="navigateTo('programs')">Programs</a>
-            <a onclick="navigateTo('tuition')">Tuition Plans</a>
-            <a onclick="navigateTo('contact')">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#programs">Programs</a>
+            <a href="#tuition">Tuition Plans</a>
+            <a href="#about">About</a>
+            <a href="#faqs">FAQs</a>
+            <a href="#contact">Contact</a>
         </div>
     </footer>
 
     <script>
-        function navigateTo(pageId) {
-            const pages = document.querySelectorAll('.page-content');
-            const allLinks = document.querySelectorAll(`a[onclick^="navigateTo"]`);
-            
-            // Hide all pages safely
-            pages.forEach(p => {
-                p.classList.remove('active-page');
-                p.style.display = 'none'; 
-            });
-            
-            // Remove active status from all matching links safely
-            allLinks.forEach(l => l.classList.remove('active'));
-            
-            // Display targeted page with CSS transition trigger
-            const targetPage = document.getElementById('page-' + pageId);
-            if(targetPage) {
-                targetPage.style.display = 'block';
-                setTimeout(() => {
-                    targetPage.classList.add('active-page');
-                }, 40);
-            }
-            
-            // Highlight the proper links across both header and footer
-            const targetLinks = document.querySelectorAll(`a[onclick="navigateTo('${pageId}')"]`);
-            targetLinks.forEach(l => {
-                l.classList.add('active');
-            });
-            
-            // Smoothly scroll back to the top on page change
-            window.scrollTo({top: 0, behavior: 'smooth'});
+        // DOM ELEMENTS MANAGEMENT
+        const menuToggleBtn = document.getElementById('mobile-menu-btn');
+        const navMenuContainer = document.getElementById('nav-menu');
+        const overlayBg = document.getElementById('blur-overlay');
+        const navLinksList = document.querySelectorAll('.nav-item');
+        const contentSections = document.querySelectorAll('.section-scroll');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        // FUNCTIONS TO OPEN/CLOSE SIDEBAR CLEANLY
+        function openSidebar() {
+            navMenuContainer.classList.add('active');
+            menuToggleBtn.classList.add('open');
+            overlayBg.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
         }
 
-        // Initialize without any visual flicker on first load
-        window.addEventListener('DOMContentLoaded', () => {
-            const homePage = document.getElementById('page-home');
-            if(homePage) {
-                homePage.style.display = 'block';
-                homePage.classList.add('active-page');
+        function closeSidebar() {
+            navMenuContainer.classList.remove('active');
+            menuToggleBtn.classList.remove('open');
+            overlayBg.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // 1. MOBILE MENU TOGGLE LOGIC
+        menuToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if(navMenuContainer.classList.contains('active')) {
+                closeSidebar();
+            } else {
+                openSidebar();
             }
+        });
+
+        // Close sidebar if user clicks on the dark blurred overlay background
+        overlayBg.addEventListener('click', closeSidebar);
+
+        // 2. ACTIVE NAV LINK ON SCROLL
+        const observerOptions = {
+            root: null,
+            rootMargin: '-80px 0px -60% 0px',
+            threshold: 0
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
+                    
+                    navLinksList.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        contentSections.forEach(section => sectionObserver.observe(section));
+
+        // Close sidebar immediately when an item inside it is clicked
+        navLinksList.forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        // 3. SMOOTH ACCORDION FOR FAQS
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('open');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+
+                if (isOpen) {
+                    item.classList.remove('open');
+                    answer.style.maxHeight = null;
+                } else {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
         });
     </script>
 </body>
