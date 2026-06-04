@@ -77,7 +77,7 @@
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 1010; /* Lower than overlay to let blur cover the main page stack */
+            z-index: 1000;
             border-bottom: 1px solid rgba(4, 46, 28, 0.06);
             box-shadow: var(--shadow-sm);
         }
@@ -161,7 +161,7 @@
             background: none;
             border: none;
             padding: 5px;
-            z-index: 1050; /* FIXED: Sits on the absolute top layer so it stays clickable and sharp */
+            z-index: 1002;
         }
 
         .menu-toggle span {
@@ -173,7 +173,7 @@
             transition: var(--transition);
         }
 
-        /* Hamburger Animation to Cross */
+        /* Hamburger Animation */
         .menu-toggle.open span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -184,7 +184,7 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* BACKGROUND OVERLAY WHEN SIDE MENU OPEN */
+        /* OVERLAY SHADOW */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -192,19 +192,17 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(4, 46, 28, 0.25); 
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 1020; /* FIXED: Sits above content/header but strictly BELOW the slide-out menu */
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1000; 
         }
         .menu-overlay.active {
             display: block;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION - RELEVANT PREMIUM ISLAMIC ARTWORK BACKGROUND */
         .hero {
-            background: linear-gradient(rgba(4, 46, 28, 0.85), rgba(2, 20, 12, 0.95)), 
-                        url('https://images.unsplash.com/photo-1542816417-0f0c8427427a?q=80&w=1600') no-repeat center center/cover;
+            background: linear-gradient(rgba(4, 46, 28, 0.88), rgba(2, 20, 12, 0.97)), 
+                        url('https://images.unsplash.com/photo-1609599006353-e629bcabccad?q=80&w=1600') no-repeat center center/cover;
             color: var(--white);
             text-align: center;
             padding: 140px 24px 160px;
@@ -763,10 +761,10 @@
             transform: rotate(45deg);
         }
 
-        /* PREMIUM CALL TO ACTION */
+        /* FIXED: ARABIC CALLIGRAPHY BACKGROUND FOR CONTACT SECTION */
         .contact-section {
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light)), 
-                        url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200') no-repeat center center/cover;
+            background: linear-gradient(135deg, rgba(4, 46, 28, 0.92), rgba(2, 20, 12, 0.98)), 
+                        url('https://images.unsplash.com/photo-1590075865003-e48277afd558?q=80&w=1200') no-repeat center center/cover;
             background-blend-mode: multiply;
             color: var(--white);
             border-radius: 20px;
@@ -905,21 +903,20 @@
                 display: flex; 
             }
 
-            /* FIXED: Sits on z-index 1030 (STRICTLY ABOVE THE BLUR OVERLAY LAYER) */
             .nav-links {
                 position: fixed;
                 top: 0;
                 right: -100vw; 
                 width: 280px;
                 height: 100vh;
-                background: var(--white); /* Crisp solid background with no inherited transparency */
+                background: #ffffff !important; 
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
                 padding: 100px 30px 40px;
-                box-shadow: -10px 0 30px rgba(4, 46, 28, 0.15);
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-                z-index: 1030; /* FIXED: Higher than 1020 (overlay), so links stay clean and sharp */
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+                transition: right 0.3s ease-in-out; 
+                z-index: 1001; 
                 visibility: hidden; 
             }
 
@@ -930,6 +927,7 @@
 
             .nav-links li {
                 width: 100%;
+                display: block;
             }
 
             .nav-links a { 
@@ -937,10 +935,17 @@
                 margin-bottom: 25px; 
                 display: block; 
                 font-size: 16px; 
+                font-weight: 600;
                 width: 100%; 
                 border-bottom: 1px solid var(--border);
-                padding-bottom: 10px;
-                color: var(--slate) !important; /* FIXED: Overrides any inherited transparency blur rules */
+                padding-bottom: 12px;
+                color: #475569 !important; 
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+
+            .nav-links a:hover, .nav-links a.active {
+                color: var(--emerald) !important;
             }
             
             .hero { padding: 100px 20px 120px; }
@@ -1275,7 +1280,7 @@
         </div>
     </section>
 
-    <!-- CONVERSION ORIENTED CONTACT BLOCK -->
+    <!-- CONVERSION ORIENTED CONTACT BLOCK - UPDATED WITH ELEGANT ISLAMIC ILLUMINATION THEME -->
     <div class="contact-section section-scroll" id="contact">
         <h2>Begin Your Learning Journey</h2>
         <p>Connect with our coordination desk directly to schedule your free evaluation trial setup.</p>
@@ -1328,22 +1333,20 @@
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
 
-        // FUNCTIONS TO OPEN/CLOSE SIDEBAR CLEANLY
         function openSidebar() {
             navMenuContainer.classList.add('active');
             menuToggleBtn.classList.add('open');
             overlayBg.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeSidebar() {
             navMenuContainer.classList.remove('active');
             menuToggleBtn.classList.remove('open');
             overlayBg.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = ''; 
         }
 
-        // 1. MOBILE MENU TOGGLE LOGIC
         menuToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if(navMenuContainer.classList.contains('active')) {
@@ -1353,10 +1356,8 @@
             }
         });
 
-        // Close sidebar if user clicks on the dark blurred overlay background
         overlayBg.addEventListener('click', closeSidebar);
 
-        // 2. ACTIVE NAV LINK ON SCROLL
         const observerOptions = {
             root: null,
             rootMargin: '-80px 0px -60% 0px',
@@ -1380,12 +1381,10 @@
 
         contentSections.forEach(section => sectionObserver.observe(section));
 
-        // Close sidebar immediately when an item inside it is clicked
         navLinksList.forEach(link => {
             link.addEventListener('click', closeSidebar);
         });
 
-        // 3. SMOOTH ACCORDION FOR FAQS
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
