@@ -153,7 +153,7 @@
             background: none;
             border: none;
             padding: 5px;
-            z-index: 1030;
+            z-index: 1050; /* Increased to stay on top of drawer */
         }
 
         .menu-toggle span {
@@ -188,9 +188,12 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             z-index: 1012;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         .menu-overlay.active {
-            display: block !important;
+            display: block;
+            opacity: 1;
         }
 
         /* HERO SECTION */
@@ -897,11 +900,11 @@
                 display: flex; 
             }
 
-            /* FIXED: Removed !important conflict so CSS can shift right position correctly */
+            /* FIXED: Completely remade drawer using transform for optimal performance & zero lag */
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%; 
+                right: 0; 
                 width: 280px;
                 height: 100vh;
                 background: var(--white);
@@ -912,12 +915,13 @@
                 box-shadow: -10px 0 30px rgba(4, 46, 28, 0.1);
                 z-index: 1040;
                 display: flex; 
+                transform: translateX(100%);
                 transition: var(--transition);
             }
 
-            /* FIXED: Ensured class selector correctly slides menu out to viewport */
+            /* FIXED: Handled transition state explicitly */
             .nav-links.active { 
-                right: 0 !important; 
+                transform: translateX(0);
             }
 
             .nav-links a { 
@@ -1268,7 +1272,7 @@
                 </div>
             </div>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Connect via WhatsApp for instant reply.');">
+            <form class="contact-form" id="academy-contact-form">
                 <div class="form-group">
                     <input type="text" placeholder="Your Name" required>
                 </div>
@@ -1306,6 +1310,7 @@
         const navLinksList = document.querySelectorAll('.nav-links a');
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
+        const contactForm = document.getElementById('academy-contact-form');
 
         // FUNCTIONS TO OPEN/CLOSE SIDEBAR CLEANLY
         function openSidebar() {
@@ -1369,24 +1374,3 @@
             const answer = item.querySelector('.faq-answer');
 
             question.addEventListener('click', () => {
-                const isOpen = item.classList.contains('open');
-                
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('open');
-                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                    }
-                });
-
-                if (isOpen) {
-                    item.classList.remove('open');
-                    answer.style.maxHeight = null;
-                } else {
-                    item.classList.add('open');
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                }
-            });
-        });
-    </script>
-</body>
-</html>
