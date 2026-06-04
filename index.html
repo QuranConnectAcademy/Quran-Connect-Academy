@@ -897,26 +897,26 @@
                 display: flex; 
             }
 
-            /* FIXED & REWRITTEN: Complete Mobile Sidebar Reset */
+            /* FIXED: Removed !important conflict so CSS can shift right position correctly */
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100% !important; /* Forces it to stay off-screen hidden initially */
+                right: -100%; 
                 width: 280px;
                 height: 100vh;
-                background: var(--white) !important;
+                background: var(--white);
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
                 padding: 100px 30px 40px;
                 box-shadow: -10px 0 30px rgba(4, 46, 28, 0.1);
-                z-index: 1040 !important;
-                display: flex !important; /* Overrides conflicting layout rules */
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                z-index: 1040;
+                display: flex; 
+                transition: var(--transition);
             }
 
-            /* FIXED: High specificity selector to guarantee slide-out movement */
-            header .nav-links.active { 
+            /* FIXED: Ensured class selector correctly slides menu out to viewport */
+            .nav-links.active { 
                 right: 0 !important; 
             }
 
@@ -945,8 +945,6 @@
     </style>
 </head>
 <body>
-
-    
 
     <header>
         <a href="#home" class="logo">
@@ -1296,7 +1294,9 @@
             <a href="#contact">Contact</a>
         </div>
     </footer>
-<div class="menu-overlay" id="blur-overlay"></div>
+
+    <div class="menu-overlay" id="blur-overlay"></div>
+
     <script>
         // DOM ELEMENTS MANAGEMENT
         const menuToggleBtn = document.getElementById('mobile-menu-btn');
