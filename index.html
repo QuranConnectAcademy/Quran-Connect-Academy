@@ -187,7 +187,7 @@
             background: rgba(4, 46, 28, 0.25);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            z-index: 1011;
+            z-index: 1012;
         }
         .menu-overlay.active {
             display: block;
@@ -910,7 +910,7 @@
                 justify-content: flex-start;
                 padding: 100px 30px 40px;
                 box-shadow: -10px 0 30px rgba(4, 46, 28, 0.1);
-                z-index: 1015;
+                z-index: 1040 !important;
                 display: flex !important; /* Overrides conflicting layout rules */
                 transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             }
@@ -946,7 +946,7 @@
 </head>
 <body>
 
-    <div class="menu-overlay" id="blur-overlay"></div>
+    
 
     <header>
         <a href="#home" class="logo">
@@ -1296,7 +1296,7 @@
             <a href="#contact">Contact</a>
         </div>
     </footer>
-
+<div class="menu-overlay" id="blur-overlay"></div>
     <script>
         // DOM ELEMENTS MANAGEMENT
         const menuToggleBtn = document.getElementById('mobile-menu-btn');
