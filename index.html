@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quran Connect Academy | Premium Classical Arabic & Quranic Studies</title>
     
-    <!-- Professional SEO Optimization -->
     <meta name="description" content="Learn Classical Arabic grammar, Tajweed rules, and Quranic studies online with structured, personalized one-on-one programs under Sheikh Muhammad Abdullah.">
     <meta name="keywords" content="Classical Arabic, Learn Quran Online, Tajweed Rules, Quranic Grammar, Arabic Tutor, Quran Connect Academy">
     <meta name="google-site-verification" content="C7_r3S4jOzROOFRUrt_epWIgigPfwKHeYEOCOS4bbqU" />
     
-    <!-- Premium Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
@@ -59,6 +57,7 @@
             color: var(--emerald);
         }
 
+        /* FIXED: Added to ensure smooth jumping via menu headers */
         .section-scroll {
             scroll-margin-top: var(--header-height);
         }
@@ -155,7 +154,7 @@
             background: none;
             border: none;
             padding: 5px;
-            z-index: 1030; /* Higher than sidebar */
+            z-index: 1030;
         }
 
         .menu-toggle span {
@@ -167,7 +166,6 @@
             transition: var(--transition);
         }
 
-        /* Hambuger Animation to Cross */
         .menu-toggle.open span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -178,7 +176,6 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* BACKGROUND OVERLAY WHEN SIDE MENU OPEN */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -241,7 +238,6 @@
             flex-wrap: wrap;
         }
 
-        /* PREMIUM BUTTONS */
         .btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--emerald);
@@ -338,7 +334,6 @@
             line-height: 1.6;
         }
 
-        /* SECTIONS WRAPPER */
         section {
             padding: 90px 6% 70px;
             max-width: 1200px;
@@ -458,7 +453,7 @@
             color: #334155;
         }
 
-        /* 4-STEP FRAMEWORK TIMELINE */
+        /* 4-STEP FRAMEWORK */
         .methodology-box {
             margin-top: 35px;
             background: var(--emerald-soft);
@@ -508,7 +503,7 @@
             margin-bottom: 0;
         }
 
-        /* PROGRAMS ROW DESIGN */
+        /* PROGRAMS GRID */
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -664,7 +659,7 @@
             border: 1px dashed var(--border);
         }
 
-        /* REVIEWS BANNER */
+        /* REVIEWS */
         .reviews {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -699,7 +694,7 @@
             font-weight: 600;
         }
 
-        /* ACCORDION */
+        /* FAQ ACCORDION */
         .faq-container {
             max-width: 850px;
             margin: 0 auto;
@@ -757,7 +752,7 @@
             transform: rotate(45deg);
         }
 
-        /* PREMIUM CALL TO ACTION */
+        /* CONTACT BLOCK */
         .contact-section {
             background: linear-gradient(135deg, var(--emerald), var(--emerald-light)), 
                         url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200') no-repeat center center/cover;
@@ -887,7 +882,7 @@
             color: var(--gold);
         }
 
-        /* RESPONSIVENESS AND FIXED MOBILE VIEW SIDEBAR */
+        /* RESPONSIVENESS & FIXES */
         @media (max-width: 968px) {
             .about-container { grid-template-columns: 1fr; }
             .about-img-box { height: 320px; }
@@ -899,24 +894,22 @@
                 display: flex; 
             }
 
-            /* FIXED: Fully functioning Slide-out Side Menu */
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hidden by default */
+                right: -100%; 
                 width: 280px;
                 height: 100vh;
                 background: var(--white);
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                padding: 100px 30px 40px; /* Leave space for button on top */
+                padding: 100px 30px 40px; 
                 box-shadow: -10px 0 30px rgba(4, 46, 28, 0.1);
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Ultra smooth slide */
-                z-index: 1015; /* Sits beneath hamburger but above page */
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+                z-index: 1015; 
             }
 
-            /* FIXED: This class triggers when Javascript adds '.active' */
             .nav-links.active { 
                 right: 0 !important; 
             }
@@ -931,22 +924,22 @@
                 padding-bottom: 10px;
             }
             
-            .hero { padding: 100px 20px 120px; }
+            /* FIXED: Handled explicit edge paddings for smaller screens */
+            .hero { padding: 100px 16px 120px; }
             .hero h2 { font-size: 28px; line-height: 1.3; }
             .hero p { font-size: 15px; margin-bottom: 25px; }
             
             .hero-btn-container { flex-direction: column; gap: 12px; }
             .btn, .btn-secondary { width: 100%; text-align: center; }
-            section { padding: 60px 20px 40px; }
+            section { padding: 60px 16px 40px; }
             .section-header h2 { font-size: 26px; }
             .price-card.featured { transform: none; margin: 10px 0; }
-            .contact-section { padding: 40px 20px; border-radius: 10px; margin-bottom: 40px;}
+            .contact-section { padding: 40px 16px; border-radius: 10px; margin-bottom: 40px;}
         }
     </style>
 </head>
 <body>
 
-    <!-- OVERLAY SHADOW ELEMENT -->
     <div class="menu-overlay" id="blur-overlay"></div>
 
     <header>
@@ -969,20 +962,18 @@
         </ul>
     </header>
 
-    <!-- HOME HERO SECTION -->
     <div id="home" class="section-scroll">
-        <section class="hero" style="max-width:100%; padding-left:0; padding-right:0; margin:0;">
-            <div style="max-width:1200px; margin:0 auto; padding:0 24px;">
+        <section class="hero" style="max-width:100%; margin:0;">
+            <div style="max-width:1200px; margin:0 auto;">
                 <h2>Online Quran & Classical Arabic Studies</h2>
                 <p>Providing clear, highly structured online guidance designed for global students seeking to master precise phonetic recitation, structural grammar, and comprehension.</p>
                 <div class="hero-btn-container">
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20booking%20a%20free%20trial%20class%20at%20Quran%20Connect%20Academy." class="btn" target="_blank">Book A Free Trial Class</a>
+                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum%2C%20I%20am%20interested%20in%20booking%20a%20free%20trial%20class%20at%20Quran%20Connect%20Academy." class="btn" target="_blank">Book A Free Trial Class</a>
                     <a href="#programs" class="btn-secondary">Explore Programs</a>
                 </div>
             </div>
         </section>
 
-        <!-- FLOATING INFO CARDS -->
         <div class="grid-info">
             <div class="card-info">
                 <div class="card-info-icon">01</div>
@@ -1002,9 +993,8 @@
         </div>
     </div>
 
-    <!-- PROGRAMS SECTION -->
-    <section id="programs" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <section id="programs" class="section-scroll" style="background-color: var(--white); max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
             <div class="section-header">
                 <h2>Our Programs</h2>
                 <p>Clear and carefully organized courses built for both young learners and adults</p>
@@ -1075,7 +1065,6 @@
         </div>
     </section>
 
-    <!-- TUITION / PRICING SECTION -->
     <section id="tuition" class="section-scroll">
         <div class="section-header">
             <h2>Tuition Plans</h2>
@@ -1091,7 +1080,7 @@
                     <li>8 Classes / Month</li>
                     <li>30-Minute Sessions</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Foundation%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Foundation%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
             </div>
             <div class="price-card featured">
                 <div class="popular-badge">Most Popular</div>
@@ -1102,7 +1091,7 @@
                     <li>12 Classes / Month</li>
                     <li>30-Minute Sessions</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Standard%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Standard%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
             </div>
             <div class="price-card">
                 <h3>Intensive Plan</h3>
@@ -1112,7 +1101,7 @@
                     <li>20 Classes / Month</li>
                     <li>30-Minute Sessions</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Intensive%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Intensive%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
             </div>
             <div class="price-card">
                 <h3>Premium Weekend Plan</h3>
@@ -1122,13 +1111,12 @@
                     <li>Custom Hours / Month</li>
                     <li>Flexible Class Length</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Premium%20Weekend%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Premium%20Weekend%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enrol Now</a>
             </div>
         </div>
         
         <p class="custom-note">Need a tailored schedule or family plan? Contact our support desk for custom arrangements.</p>
 
-        <!-- STUDENT SOCIAL PROOF -->
         <div class="reviews">
             <div class="review-card">
                 <div class="stars">★★★★★</div>
@@ -1143,9 +1131,8 @@
         </div>
     </section>
 
-    <!-- ABOUT / FACULTY SECTION -->
-    <section id="about" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <section id="about" class="section-scroll" style="background-color: var(--white); max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
             <div class="section-header">
                 <h2>Our Faculty</h2>
                 <p>Learn about the academic foundation and educational direction of our academy</p>
@@ -1166,7 +1153,6 @@
                     <p>With more than 7+ years of international teaching experience, Sheikh Muhammad Abdullah has designed clear, systematic pathways to help global students read and understand text smoothly. His classes guide students to recite the Holy Quran using the precise, beautiful phonetic rules matching the verified traditional frameworks of the Imams of the Haram.</p>
                     <p>Alongside his deep classical Islamic education, Sheikh Muhammad Abdullah is an <strong>LLB Graduate (Law)</strong>. This background brings an exceptionally high standard of logical thinking, structural clarity, and modern professional organization into traditional classical learning models. By combining deep traditional roots with formal legal reasoning, he ensures that students receive highly clear, accurate, and professional instruction.</p>
                     
-                    <!-- 4-Step Framework Embedded -->
                     <div class="methodology-box">
                         <h4>Our 4-Step Pedagogical Framework</h4>
                         <div class="methodology-grid">
@@ -1197,7 +1183,6 @@
         </div>
     </section>
 
-    <!-- FAQS SECTION -->
     <section id="faqs" class="section-scroll">
         <div class="section-header">
             <h2>Frequently Asked Questions</h2>
@@ -1263,7 +1248,6 @@
         </div>
     </section>
 
-    <!-- CONVERSION ORIENTED CONTACT BLOCK -->
     <div class="contact-section section-scroll" id="contact">
         <h2>Begin Your Learning Journey</h2>
         <p>Connect with our coordination desk directly to schedule your free evaluation trial setup.</p>
@@ -1272,7 +1256,7 @@
             <div class="contact-boxes">
                 <div class="c-box">
                     <p>Direct WhatsApp</p>
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20want%20to%20get%20in%20touch%20with%20Quran%20Connect%20Academy." target="_blank">+92 314 4063401</a>
+                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum%2C%20I%20want%20to%20get%20in%20touch%20with%20Quran%20Connect%20Academy." target="_blank">+92 314 4063401</a>
                 </div>
                 <div class="c-box">
                     <p>Email Desk</p>
@@ -1280,7 +1264,7 @@
                 </div>
             </div>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Connect via WhatsApp for instant reply.');">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry was recorded. Please connect via WhatsApp for an instant response.');">
                 <div class="form-group">
                     <input type="text" placeholder="Your Name" required>
                 </div>
@@ -1308,7 +1292,6 @@
     </footer>
 
     <script>
-        // DOM ELEMENTS MANAGEMENT
         const menuToggleBtn = document.getElementById('mobile-menu-btn');
         const navMenuContainer = document.getElementById('nav-menu');
         const overlayBg = document.getElementById('blur-overlay');
@@ -1316,22 +1299,20 @@
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
 
-        // FUNCTIONS TO OPEN/CLOSE SIDEBAR CLEANLY
         function openSidebar() {
             navMenuContainer.classList.add('active');
             menuToggleBtn.classList.add('open');
             overlayBg.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeSidebar() {
             navMenuContainer.classList.remove('active');
             menuToggleBtn.classList.remove('open');
             overlayBg.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = ''; 
         }
 
-        // 1. MOBILE MENU TOGGLE LOGIC
         menuToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if(navMenuContainer.classList.contains('active')) {
@@ -1341,10 +1322,8 @@
             }
         });
 
-        // Close sidebar if user clicks on the dark blurred overlay background
         overlayBg.addEventListener('click', closeSidebar);
 
-        // 2. ACTIVE NAV LINK ON SCROLL
         const observerOptions = {
             root: null,
             rootMargin: '-80px 0px -60% 0px',
@@ -1368,12 +1347,10 @@
 
         contentSections.forEach(section => sectionObserver.observe(section));
 
-        // Close sidebar immediately when an item inside it is clicked
         navLinksList.forEach(link => {
             link.addEventListener('click', closeSidebar);
         });
 
-        // 3. SMOOTH ACCORDION FOR FAQS
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
