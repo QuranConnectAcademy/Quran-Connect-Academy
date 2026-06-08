@@ -14,6 +14,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
+        .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.logo h1 {
+    font-size: 21px;
+    color: var(--emerald);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+    .logo h1 {
+        font-size: 18px;
+    }
+}
         :root {
             --emerald: #042e1c;
             --emerald-light: #064e32;
@@ -79,34 +109,38 @@
             border-bottom: 1px solid rgba(4, 46, 28, 0.06);
             box-shadow: var(--shadow-sm);
         }
-
+        
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-weight: 800;
-            font-size: 18px;
-            border: 1px solid var(--gold);
-        }
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
 
-        .logo h1 {
-            font-size: 21px;
-            color: var(--emerald);
-            font-weight: 800;
-            letter-spacing: -0.5px;
+.logo h1 {
+    font-size: 21px;
+    color: var(--emerald);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+    .logo h1 {
+        font-size: 18px;
+    }
+}
+        
         }
 
         .nav-links {
