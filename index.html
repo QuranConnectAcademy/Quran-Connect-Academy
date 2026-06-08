@@ -383,11 +383,19 @@
 
         /* FACULTY LAYOUT */
         .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 45px;
-            align-items: center;
-        }
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 45px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-image-side {
+    position: sticky;
+    top: 100px;
+}
+
 
         .about-image-side {
             position: relative;
