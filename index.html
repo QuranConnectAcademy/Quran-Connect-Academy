@@ -84,8 +84,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            cursor: pointer;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .logo-icon {
@@ -404,10 +404,13 @@
             width: 100%;
             height: 420px;
             border-radius: 16px;
-            background: linear-gradient(rgba(4, 46, 28, 0.2), rgba(4, 46, 28, 0.4)),
-                        url('IMG_20250915_170421.jpg') no-repeat center center/cover;
+            background-color: var(--emerald);
+            background-image: linear-gradient(rgba(4, 46, 28, 0.1), rgba(4, 46, 28, 0.45)), url('IMG_20250915_170421.jpg');
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
             box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(194, 157, 56, 0.2);
+            border: 1px solid rgba(194, 157, 56, 0.25);
         }
 
         .experience-badge {
@@ -844,6 +847,7 @@
             padding: 25px;
             border-radius: 12px;
             backdrop-filter: blur(8px);
+            position: relative;
         }
 
         .form-group {
@@ -870,6 +874,22 @@
 
         .form-group input::placeholder, .form-group textarea::placeholder {
             color: #94a3b8;
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13.5px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .form-status.success {
+            display: block;
+            background: rgba(194, 157, 56, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
         }
 
         footer {
@@ -970,23 +990,25 @@
     <div class="menu-overlay" id="blur-overlay"></div>
 
     <header>
-        <a href="#home" class="logo">
+        <a href="#home" class="logo" aria-label="Quran Connect Academy Home">
             <div class="logo-icon">Q</div>
             <h1>Quran Connect Academy</h1>
         </a>
-        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="#home" class="nav-item active">Home</a></li>
-            <li><a href="#programs" class="nav-item">Programs</a></li>
-            <li><a href="#tuition" class="nav-item">Tuition</a></li>
-            <li><a href="#about" class="nav-item">About Us</a></li>
-            <li><a href="#faqs" class="nav-item">FAQs</a></li>
-            <li><a href="#contact" class="nav-item">Contact</a></li>
-        </ul>
+        <nav role="navigation">
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#home" class="nav-item active">Home</a></li>
+                <li><a href="#programs" class="nav-item">Programs</a></li>
+                <li><a href="#tuition" class="nav-item">Tuition</a></li>
+                <li><a href="#about" class="nav-item">About Us</a></li>
+                <li><a href="#faqs" class="nav-item">FAQs</a></li>
+                <li><a href="#contact" class="nav-item">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div id="home" class="section-scroll">
@@ -995,7 +1017,7 @@
                 <h2>Online Quran & Classical Arabic Studies</h2>
                 <p>Providing clear, highly structured online guidance designed for global students seeking to master precise phonetic recitation, structural grammar, and comprehension.</p>
                 <div class="hero-btn-container">
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20booking%20a%20free%20trial%20class%20at%20Quran%20Connect%20Academy." class="btn" target="_blank">Book A Free Trial Class</a>
+                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20booking%20a%20free%20trial%20class%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" rel="noopener">Book A Free Trial Class</a>
                     <a href="#programs" class="btn-secondary">Explore Programs</a>
                 </div>
             </div>
@@ -1107,7 +1129,7 @@
                     <li>8 Classes / Month</li>
                     <li>30-Minute Sessions</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Foundation%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Foundation%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" rel="noopener" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
             </div>
             <div class="price-card featured">
                 <div class="popular-badge">Most Popular</div>
@@ -1118,7 +1140,7 @@
                     <li>12 Classes / Month</li>
                     <li>30-Minute Sessions</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Standard%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Standard%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" rel="noopener" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
             </div>
             <div class="price-card">
                 <h3>Intensive Plan</h3>
@@ -1128,7 +1150,7 @@
                     <li>20 Classes / Month</li>
                     <li>30-Minute Sessions</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Intensive%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Intensive%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" rel="noopener" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
             </div>
             <div class="price-card">
                 <h3>Premium Weekend Plan</h3>
@@ -1138,7 +1160,7 @@
                     <li>Custom Hours / Month</li>
                     <li>Flexible Class Length</li>
                 </ul>
-                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Premium%20Weekend%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
+                <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20am%20interested%20in%20enrolling%20in%20the%20Premium%20Weekend%20Plan%20at%20Quran%20Connect%20Academy." class="btn" target="_blank" rel="noopener" style="padding: 10px 20px; font-size: 14px;">Enroll Now</a>
             </div>
         </div>
         
@@ -1283,7 +1305,7 @@
             <div class="contact-boxes">
                 <div class="c-box">
                     <p>Direct WhatsApp</p>
-                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20want%20to%20get%20in%20touch%20with%20Quran%20Connect%20Academy." target="_blank">+92 314 4063401</a>
+                    <a href="https://wa.me/923144063401?text=Assalam-o-Alaikum,%20I%20want%20to%20get%20in%20touch%20with%20Quran%20Connect%20Academy." target="_blank" rel="noopener">+92 314 4063401</a>
                 </div>
                 <div class="c-box">
                     <p>Email Desk</p>
@@ -1291,17 +1313,18 @@
                 </div>
             </div>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Connect via WhatsApp for instant reply.');">
+            <form class="contact-form" id="academyContactForm">
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" placeholder="Your Name" required aria-label="Your Name">
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="email" placeholder="Your Email" required aria-label="Your Email">
                 </div>
                 <div class="form-group">
-                    <textarea rows="3" placeholder="Message or Preferred Class Timings" required></textarea>
+                    <textarea rows="3" placeholder="Message or Preferred Class Timings" required aria-label="Message or Preferred Class Timings"></textarea>
                 </div>
                 <button type="submit" class="btn" style="width:100%; padding:12px; background: var(--gold); color: var(--emerald);">Submit Request</button>
+                <div class="form-status" id="formStatusNotice">Thank you! Connect via WhatsApp for an instant reply.</div>
             </form>
         </div>
     </div>
@@ -1326,12 +1349,14 @@
         const navLinksList = document.querySelectorAll('.nav-item');
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
+        const contactForm = document.getElementById('academyContactForm');
+        const statusNotice = document.getElementById('formStatusNotice');
 
         function openSidebar() {
             navMenuContainer.classList.add('active');
             menuToggleBtn.classList.add('open');
             overlayBg.classList.add('active');
-            document.documentElement.style.overflow = 'hidden'; /* Fix for iOS Safari block */
+            document.documentElement.style.overflow = 'hidden';
             document.body.style.overflow = 'hidden'; 
         }
 
@@ -1403,6 +1428,16 @@
                     answer.style.maxHeight = answer.scrollHeight + "px";
                 }
             });
+        });
+
+        // REFINED FORM OVERRIDE UX
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            statusNotice.classList.add('success');
+            contactForm.reset();
+            setTimeout(() => {
+                statusNotice.classList.remove('success');
+            }, 6000);
         });
     </script>
 </body>
