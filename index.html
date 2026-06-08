@@ -1042,8 +1042,8 @@
         </div>
     </div>
 
-    <section id="programs" class="section-scroll" style="background-color: var(--white); max-width: 100%; padding-left: 0; padding-right: 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <section id="programs" class="section-scroll" style="background-color: var(--white);">
+        <div style="max-width: 1200px; margin: 0 auto;">
             <div class="section-header">
                 <h2>Our Programs</h2>
                 <p>Clear and carefully organized courses built for both young learners and adults</p>
@@ -1346,21 +1346,19 @@
         const menuToggleBtn = document.getElementById('mobile-menu-btn');
         const navMenuContainer = document.getElementById('nav-menu');
         const overlayBg = document.getElementById('blur-overlay');
-        
-        // CORRECTION: Target links inside the container directly instead of searching for an missing class
         const navLinksList = document.querySelectorAll('#nav-menu a');
-        
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
         const contactForm = document.getElementById('academyContactForm');
         const statusNotice = document.getElementById('formStatusNotice');
+        
+        let statusTimeout; // Thread-safe state holder for form notifications
 
         function openSidebar() {
             navMenuContainer.classList.add('active');
             menuToggleBtn.classList.add('open');
             overlayBg.classList.add('active');
             
-            // Prevent background content jumps or stuttering on scroll locks
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden'; 
         }
@@ -1370,7 +1368,6 @@
             menuToggleBtn.classList.remove('open');
             overlayBg.classList.remove('active');
             
-            // Optimize layout paint synchronization for seamless link jumping
             requestAnimationFrame(() => {
                 document.body.style.overflow = ''; 
                 document.documentElement.style.overflow = ''; 
@@ -1439,12 +1436,15 @@
             });
         });
 
-        // FORM HANDLING OVERRIDE
+        // SAFE MULTI-CLICK FORM TIMEOUT MANAGEMENT
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
+            
+            clearTimeout(statusTimeout);
             statusNotice.classList.add('success');
             contactForm.reset();
-            setTimeout(() => {
+            
+            statusTimeout = setTimeout(() => {
                 statusNotice.classList.remove('success');
             }, 6000);
         });
