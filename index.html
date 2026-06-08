@@ -197,10 +197,10 @@
             display: block;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION WITH OPTIMIZED WEBP LINK */
         .hero {
             background: linear-gradient(rgba(4, 46, 28, 0.88), rgba(2, 20, 12, 0.97)), 
-                        url('https://images.unsplash.com/photo-1609599006353-e629bcabccad?q=80&w=1600') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1609599006353-e629bcabccad?q=80&w=1600&auto=format&fit=crop&fm=webp') no-repeat center center/cover;
             color: var(--white);
             text-align: center;
             padding: 140px 24px 160px;
@@ -771,10 +771,10 @@
             transform: rotate(45deg);
         }
 
-        /* CONTACT SECTION */
+        /* CONTACT SECTION WITH OPTIMIZED WEBP LINK */
         .contact-section {
             background: linear-gradient(135deg, rgba(4, 46, 28, 0.92), rgba(2, 20, 12, 0.98)), 
-                        url('https://images.unsplash.com/photo-1590075865003-e48277afd558?q=80&w=1200') no-repeat center center/cover;
+                        url('https://images.unsplash.com/photo-1590075865003-e48277afd558?q=80&w=1200&auto=format&fit=crop&fm=webp') no-repeat center center/cover;
             background-blend-mode: multiply;
             color: var(--white);
             border-radius: 20px;
@@ -918,7 +918,7 @@
             color: var(--gold);
         }
 
-        /* RESPONSIVENESS AND FIXED MOBILE VIEW BREAKPOINTS */
+        /* RESPONSIVENESS AND REFINED BREAKPOINTS */
         @media (max-width: 968px) {
             .about-container { grid-template-columns: 1fr; }
             .about-img-box { height: 320px; }
@@ -941,7 +941,7 @@
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 justify-content: flex-start !important;
-                padding: 100px 24px 40px !important;
+                padding: calc(var(--header-height) + 20px) 24px 40px !important;
                 box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
                 transition: var(--transition); 
                 z-index: 1001; 
@@ -1001,12 +1001,12 @@
         </button>
         <nav role="navigation">
             <ul class="nav-links" id="nav-menu">
-                <li><a href="#home" class="nav-item active">Home</a></li>
-                <li><a href="#programs" class="nav-item">Programs</a></li>
-                <li><a href="#tuition" class="nav-item">Tuition</a></li>
-                <li><a href="#about" class="nav-item">About Us</a></li>
-                <li><a href="#faqs" class="nav-item">FAQs</a></li>
-                <li><a href="#contact" class="nav-item">Contact</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#tuition">Tuition</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -1168,12 +1168,12 @@
 
         <div class="reviews">
             <div class="review-card">
-                <div class="stars">★★★★★</div>
+                <div class="stars" aria-label="5 out of 5 stars" role="img">★★★★★</div>
                 <p>"The instruction is exceptionally clear. The director's academic legal background adds an incredible level of structural clarity to the classical grammar lessons."</p>
                 <h4>Saif (Linguistic Analysis Student)</h4>
             </div>
             <div class="review-card">
-                <div class="stars">★★★★★</div>
+                <div class="stars" aria-label="5 out of 5 stars" role="img">★★★★★</div>
                 <p>"Very cooperative and professional. The coordination makes scheduling incredibly simple around our local school timings."</p>
                 <h4>Amina (United Kingdom Student)</h4>
             </div>
@@ -1346,7 +1346,10 @@
         const menuToggleBtn = document.getElementById('mobile-menu-btn');
         const navMenuContainer = document.getElementById('nav-menu');
         const overlayBg = document.getElementById('blur-overlay');
-        const navLinksList = document.querySelectorAll('.nav-item');
+        
+        // CORRECTION: Target links inside the container directly instead of searching for an missing class
+        const navLinksList = document.querySelectorAll('#nav-menu a');
+        
         const contentSections = document.querySelectorAll('.section-scroll');
         const faqItems = document.querySelectorAll('.faq-item');
         const contactForm = document.getElementById('academyContactForm');
@@ -1356,16 +1359,22 @@
             navMenuContainer.classList.add('active');
             menuToggleBtn.classList.add('open');
             overlayBg.classList.add('active');
-            document.documentElement.style.overflow = 'hidden';
-            document.body.style.overflow = 'hidden'; 
+            
+            // Prevent background content jumps or stuttering on scroll locks
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden'; 
         }
 
         function closeSidebar() {
             navMenuContainer.classList.remove('active');
             menuToggleBtn.classList.remove('open');
             overlayBg.classList.remove('active');
-            document.documentElement.style.overflow = ''; 
-            document.body.style.overflow = ''; 
+            
+            // Optimize layout paint synchronization for seamless link jumping
+            requestAnimationFrame(() => {
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = ''; 
+            });
         }
 
         menuToggleBtn.addEventListener('click', (e) => {
@@ -1430,7 +1439,7 @@
             });
         });
 
-        // REFINED FORM OVERRIDE UX
+        // FORM HANDLING OVERRIDE
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
             statusNotice.classList.add('success');
