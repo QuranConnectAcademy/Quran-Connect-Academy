@@ -14,39 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
-        .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.logo-img {
-    height: 60px;
-    width: 60px;
-    object-fit: contain;
-    display: block;
-    mix-blend-mode: multiply;
-}
-
-.logo h1 {
-    font-size: 21px;
-    color: var(--emerald);
-    font-weight: 800;
-    letter-spacing: -0.5px;
-}
-
-@media (max-width: 768px) {
-    .logo-img {
-    height: 50px;
-    width: 50px;
-    mix-blend-mode: multiply;
-    }
-    .logo h1 {
-        font-size: 18px;
-    }
-}
         :root {
             --emerald: #042e1c;
             --emerald-light: #064e32;
@@ -114,39 +81,26 @@
         }
         
         .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    cursor: pointer;
-}
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-.logo-img {
-    height: 60px;
-    width: 60px;
-    object-fit: contain;
-    display: block;
-    mix-blend-mode: multiply;
-}
+        .logo-img {
+            height: 60px;
+            width: 60px;
+            object-fit: contain;
+            display: block;
+            mix-blend-mode: multiply;
+        }
 
-.logo h1 {
-    font-size: 21px;
-    color: var(--emerald);
-    font-weight: 800;
-    letter-spacing: -0.5px;
-}
-
-@media (max-width: 768px) {
-    .logo-img {
-    height: 50px;
-    width: 50px;
-    mix-blend-mode: multiply;
-}
-    .logo h1 {
-        font-size: 18px;
-    }
-}
-        
+        .logo h1 {
+            font-size: 21px;
+            color: var(--emerald);
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -211,7 +165,6 @@
             transition: var(--transition);
         }
 
-        /* Hamburger Animation */
         .menu-toggle.open span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -222,7 +175,6 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* OVERLAY SHADOW */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -237,7 +189,7 @@
             display: block;
         }
 
-        /* HERO SECTION WITH OPTIMIZED WEBP LINK */
+        /* HERO SECTION */
         .hero {
             background: linear-gradient(rgba(4, 46, 28, 0.88), rgba(2, 20, 12, 0.97)), 
                         url('https://images.unsplash.com/photo-1609599006353-e629bcabccad?q=80&w=1600&auto=format&fit=crop&fm=webp') no-repeat center center/cover;
@@ -285,7 +237,6 @@
             flex-wrap: wrap;
         }
 
-        /* PREMIUM BUTTONS */
         .btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--emerald);
@@ -421,7 +372,7 @@
             margin: 0 auto;
         }
 
-        /* FACULTY LAYOUT */
+        /* FIXED FACULTY LAYOUT (NO CROP & BRIGHT LIGHTING) */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -433,8 +384,6 @@
 
         .about-image-side {
             position: relative;
-            display: flex;
-            justify-content: center;
             width: 100%;
             max-width: 450px;
             margin: 0 auto;
@@ -442,15 +391,23 @@
 
         .about-img-box {
             width: 100%;
-            height: 420px;
+            height: auto;
+            max-height: 450px;
             border-radius: 16px;
-            background-color: var(--emerald);
-            background-image: linear-gradient(rgba(4, 46, 28, 0.1), rgba(4, 46, 28, 0.45)), url('IMG_20250915_170421.jpg');
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
+            overflow: hidden;
             box-shadow: var(--shadow-lg);
             border: 1px solid rgba(194, 157, 56, 0.25);
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Is se picture katay gi nahi, poori show hogi */
+            display: block;
         }
 
         .experience-badge {
@@ -463,6 +420,7 @@
             border-radius: 12px;
             box-shadow: var(--shadow-md);
             border-left: 4px solid var(--gold);
+            z-index: 5;
         }
 
         .experience-badge .num {
@@ -501,7 +459,7 @@
             border-radius: 4px;
         }
 
-        .profile-box h3 {
+        .profile-box h2 {
             font-size: 26px;
             margin-bottom: 18px;
         }
@@ -753,7 +711,7 @@
             font-weight: 600;
         }
 
-        /* ACCORDION */
+        /* ACCORDION FAQ */
         .faq-container {
             max-width: 850px;
             margin: 0 auto;
@@ -811,7 +769,7 @@
             transform: rotate(45deg);
         }
 
-        /* CONTACT SECTION WITH OPTIMIZED WEBP LINK */
+        /* CONTACT SECTION */
         .contact-section {
             background: linear-gradient(135deg, rgba(4, 46, 28, 0.92), rgba(2, 20, 12, 0.98)), 
                         url('https://images.unsplash.com/photo-1590075865003-e48277afd558?q=80&w=1200&auto=format&fit=crop&fm=webp') no-repeat center center/cover;
@@ -961,11 +919,19 @@
         /* RESPONSIVENESS AND REFINED BREAKPOINTS */
         @media (max-width: 968px) {
             .about-container { grid-template-columns: 1fr; }
-            .about-img-box { height: 320px; }
             .contact-container { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
+            .logo-img {
+                height: 50px;
+                width: 50px;
+                mix-blend-mode: multiply;
+            }
+            .logo h1 {
+                font-size: 18px;
+            }
+
             .menu-toggle { 
                 display: flex; 
             }
@@ -1031,8 +997,8 @@
 
     <header>
         <a href="#home" class="logo" aria-label="Quran Connect Academy Home">
-    <img src="logo.jpg" alt="Quran Connect Academy Logo" class="logo-img">
-    <h1>Quran Connect Academy</h1>
+            <img src="logo.jpg" alt="Quran Connect Academy Logo" class="logo-img">
+            <h1>Quran Connect Academy</h1>
         </a>
         
         <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
@@ -1230,7 +1196,9 @@
             
             <div class="about-container">
                 <div class="about-image-side">
-                    <div class="about-img-box"></div>
+                    <div class="about-img-box">
+                        <img src="IMG_20250915_170421.jpg" alt="Sheikh Muhammad Abdullah">
+                    </div>
                     <div class="experience-badge">
                         <span class="num">7+</span>
                         <span class="txt">Years Global<br>Experience</span>
@@ -1393,7 +1361,7 @@
         const contactForm = document.getElementById('academyContactForm');
         const statusNotice = document.getElementById('formStatusNotice');
         
-        let statusTimeout; // Thread-safe state holder for form notifications
+        let statusTimeout; 
 
         function openSidebar() {
             navMenuContainer.classList.add('active');
@@ -1477,7 +1445,6 @@
             });
         });
 
-        // SAFE MULTI-CLICK FORM TIMEOUT MANAGEMENT
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
             
