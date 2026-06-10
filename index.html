@@ -372,7 +372,7 @@
             margin: 0 auto;
         }
 
-        /* FACULTY LAYOUT FIX (NO CROP & NO OVERLAPPING BADGE) */
+        /* FIXED FACULTY LAYOUT (CLEAN IMAGE VIEW WITHOUT CROP OR BADGES) */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -383,6 +383,7 @@
         }
 
         .about-image-side {
+            position: relative;
             width: 100%;
             max-width: 450px;
             margin: 0 auto;
@@ -391,17 +392,21 @@
         .about-img-box {
             width: 100%;
             height: auto;
+            max-height: 450px;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             border: 1px solid rgba(194, 157, 56, 0.25);
             background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .about-img-box img {
             width: 100%;
-            height: auto;
-            object-fit: cover;
+            height: 100%;
+            object-fit: contain;
             display: block;
         }
 
@@ -1168,7 +1173,7 @@
                     </div>
                 </div>
                 <div class="profile-box">
-                    <div class="profile-tag">Founder & Director</div>
+                    <div class="profile-tag">Founder & Director (7+ Years Global Experience)</div>
                     <h2>Sheikh Muhammad Abdullah</h2>
                     <p>Quran Connect Academy operates under the direct guidance of <strong>Sheikh Muhammad Abdullah</strong>, a professional educator. He holds a formal <strong>Master's degree in Arabic & Islamic Sciences</strong> along with a specialized higher specialization focusing on classical Arabic grammar and textual syntax from a recognized traditional institution.</p>
                     <p>With more than 7+ years of international teaching experience, Sheikh Muhammad Abdullah has designed clear, systematic pathways to help global students read and understand text smoothly. His classes guide students to recite the Holy Quran using the precise, beautiful phonetic rules matching the verified traditional frameworks of the Imams of the Haram.</p>
